@@ -89,3 +89,35 @@
     }
 })();
 
+function findUserByID(id) {
+    var userServiceClient = new UserServiceClient();
+    userServiceClient.findUserByID(id);
+}
+
+
+function deleteUser(id) {
+    var userServiceClient = new UserServiceClient();
+    userServiceClient.deleteUser(id);
+}
+
+function updateUser(id) {
+    var userServiceClient = new UserServiceClient();
+    var firstName = $('#firstName' + id);
+    firstName = firstName.val();
+    var lastName = $('#lastName' + id);
+    lastName = lastName.val();
+    var password = $('#password' + id);
+    password = password.val();
+    var username = $('#username' + id);
+    username = username.val();
+    var role = $('#role' + id);
+    role = role.val();
+    var phone = $('#phone' + id);
+    phone = phone.val();
+    var emailAddress = $('#emailAddress' + id);
+    emailAddress = emailAddress.val();
+    var date_of_birth = $('#date_of_birth' + id);
+    date_of_birth = date_of_birth.val();
+    userServiceClient.updateUser(id, firstName, lastName, password,
+        username, role, phone, emailAddress, date_of_birth);
+}
