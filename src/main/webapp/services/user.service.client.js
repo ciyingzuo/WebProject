@@ -93,3 +93,38 @@ function UserServiceClient() {
         }).then(location.reload());
     }
 
+
+    function updateUser(
+        id,
+        firstName,
+        lastName,
+        password,
+        username,
+        role,
+        phone,
+        emailAddress,
+        date_of_birth
+    ) {
+        var userObj = {
+            id: id,
+            firstName: firstName,
+            lastName: lastName,
+            password: password,
+            username: username,
+            role: role,
+            phone: phone,
+            emailAddress: emailAddress,
+            date_of_birth: date_of_birth
+        };
+        var userObjStr = JSON.stringify(userObj);
+        fetch('api/user/update/' + id, {
+            method: 'put',
+            body: userObjStr,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(location.reload());
+    }
+
+
+}
