@@ -36,3 +36,35 @@
 
         <tr>
             <form>
+                <th><input id="firstName" input/></th>
+                <th><input id="lastName" input/></th>
+                <th><input id="password" input/></th>
+                <th><input id="username" input/></th>
+                <th>
+                    <select id="role">
+                        <option value="Student"> Student</option>
+                        <option value="Faculty"> Faculty</option>
+                        <option value="Admin"> Admin</option>
+                    </select>
+                </th>
+                <th><input id="phone" type="tel" input/></th>
+                <th><input id="emailAddress" type="email" input/></th>
+                <th><input id="date_of_birth" type="date" input/></th>
+                <th></th>
+                <th>
+                    <input type="submit" id="registerBtn" class='btn btn-primary' value="Create User">
+                </th>
+            </form>
+        </tr>
+        </thead>
+        <tbody id="userTable">
+
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="../services/user.service.client.js"></script>
+<script src="../javascript/user_admin.controller.client.js"></script>
+<link href="../css/user_admin.style.client.css" rel="stylesheet"/>
+
+</html>
