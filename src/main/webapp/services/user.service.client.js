@@ -72,3 +72,24 @@ function UserServiceClient() {
     }
 
 
+    function findAllUsers() {
+        return fetch('/api/user/findAll')
+            .then(function (response) {
+                return response.json();
+            });
+    }
+
+    function findUserByID(id) {
+        fetch('/api/user/findById/' + id).then(function (response) {
+            return response.json();
+        });
+        ;
+    }
+
+    function deleteUser(id) {
+        fetch('/api/user/delete/' + id, {
+            method: 'delete',
+            headers: {'Content-Type': 'application/json'}
+        }).then(location.reload());
+    }
+
