@@ -5,7 +5,11 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+/**
+ * User used to represent a User.
+ *
+ * @see Enum
+ */
 public class User {
     public static enum accountType {
         Faculty,
@@ -80,7 +84,6 @@ public class User {
         this.password = passowrd;
     }
 
-
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
@@ -97,6 +100,12 @@ public class User {
         return emailAddress;
     }
 
+
+    /**
+     * Construct a invalid user which only contains username.
+     *
+     * @param username username
+     */
     public void invalidUser(String username){
         this.firstName = "";
         this.lastName = "";
