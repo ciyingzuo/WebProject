@@ -30,24 +30,3 @@
         $date_of_birth.val(user.date_of_birth.toString().substring(0, 10));
     }
 
-    function updateUser() {
-        var firstName = $('#firstName');
-        firstName = firstName.val();
-        var lastName = $('#lastName');
-        lastName = lastName.val();
-        var password = $('#password');
-        password = password.val();
-        var username = $('#username');
-        username = username.val();
-        var role = $('#role');
-        role = role.val();
-        var phone = $('#phone');
-        phone = phone.val();
-        var emailAddress = $('#emailAddress');
-        emailAddress = emailAddress.val();
-        var date_of_birth = $('#date_of_birth');
-        date_of_birth = date_of_birth.val();
-        userServiceClient.updateUser(id, firstName, lastName, password,
-            username, role, phone, emailAddress, date_of_birth);
-    }
-})();
