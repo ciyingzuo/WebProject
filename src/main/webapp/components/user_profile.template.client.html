@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+
+      rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+</script>
+
+<h1>PROFILE</h1>
+
+<div>
+    <label for="firstName"> First Name </label>
+    <input type="text" class="form-control" placeholder="First Name" id="firstName"/>
+</div>
+
+<div>
+    <label for="lastName"> Last Name </label>
+    <input type="text" class="form-control" placeholder="Last Name" id="lastName"/>
+</div>
+
+<div>
+    <label for="password"> New Password </label>
+    <input type="text" class="form-control" placeholder="Password" id="password"/>
+</div>
+
+<div>
+    <label for="username"> Username </label>
+    <input type="text" class="form-control" placeholder="Username" id="username"/>
+</div>
+
+<div>
+    <label for="phone"> Phone </label>
+    <input type="tel" class="form-control" placeholder="(xxx)xxx-xxxx" id="phone"/>
+</div>
+
+<div>
+    <label for="emailAddress"> Email Address </label>
+    <input type="email" class="form-control" placeholder="example@domain.com" id="emailAddress"/>
+</div>
+
+<div>
+    <label for="date_of_birth">Date of Birth </label>
+    <input id="date_of_birth" class="form-control" type="date"/>
+</div>
+
+<button id="updateUser" class="btn btn-primary">Update Profile</button>
+<link href="../css/user_profile.style.client.css" rel="stylesheet"/>
+<script src="../services/user.service.client.js"></script>
+<script src="../javascript/user_profile.controller.client.js"></script>
+</body>
+</html>
