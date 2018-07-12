@@ -52,38 +52,5 @@ public class UserServices {
     }
 
 
-    @PutMapping("/api/user/update/{id}")
-    public Optional<User> updateUser(@PathVariable Integer id, @RequestBody User user) {
-        Optional<User> oldUser = userRepository.findById(id);
-        User data = oldUser.get();
-        data.setFirstName(user.getFirstName());
-        data.setLastName(user.getLastName());
-        data.setPassowrd(user.getPassword());
-        data.setUsername(user.getUsername());
-        data.setRole(user.getRole());
-        data.setPhone(user.getPhone());
-        data.setEmailAddress(user.getEmailAddress());
-        data.setDate_of_birth(user.getDate_of_birth());
-        userRepository.save(data);
-        return userRepository.findById(id);
-    }
 
-    @DeleteMapping("/api/user/delete/{id}")
-    public void deleteUserByID(@PathVariable Integer id) {
-        try {
-            userRepository.deleteById(id);
-        } catch (Exception e) {
-            System.out.print(e.getMessage());
-        }
-    }
-
-    @GetMapping("/api/user/findAll")
-    public List<User> findAllUser() {
-        return (List<User>) userRepository.findAll();
-    }
-
-    @GetMapping("/api/user/findById/{id}")
-    public Optional<User> findUserById(@PathVariable Integer id) {
-        return userRepository.findById(id);
-    }
 }
