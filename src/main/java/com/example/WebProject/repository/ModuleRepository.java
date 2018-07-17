@@ -1,4 +1,9 @@
 package com.example.WebProject.repository;
 
-public interface ModuleRepository {
+import com.example.WebProject.model.Module;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
+public interface ModuleRepository extends CrudRepository<Module, Integer> {
 }
