@@ -1,8 +1,8 @@
 package com.example.WebProject.model;
-
 import javax.persistence.*;
-import java.sql.Date;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,6 +15,8 @@ public class Course {
     private Date created;
     @Temporal(TemporalType.TIMESTAMP)
     private Date modified;
+    @OneToMany(mappedBy="course")
+    private List<Module> module;
 
     public int getId() {
         return id;
@@ -32,12 +34,9 @@ public class Course {
         return modified;
     }
 
-    public List<Module> getModules() {
-        return modules;
+    public List<Module> getModule() {
+        return module;
     }
-
-    @OneToMany(mappedBy="course")
-    private List<Module> modules;
 
     public void setId(int id){
         this.id = id;
@@ -55,8 +54,8 @@ public class Course {
         this.modified = modified;
     }
 
-    public void setModules(List<Module> modules){
-        this.modules = new ArrayList<>();
+    public void setModule(List<Module> module){
+        this.module = new ArrayList<>();
     }
 }
 

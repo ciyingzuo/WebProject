@@ -1,5 +1,4 @@
 package com.example.WebProject.model;
-
 import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import java.util.Date;

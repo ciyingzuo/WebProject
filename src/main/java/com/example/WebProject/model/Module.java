@@ -1,5 +1,7 @@
 package com.example.WebProject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,10 @@ public class Module {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @OneToMany(mappedBy="module")
-    private List<Lesson> lessons;
+    private List<Lesson> lesson;
+    @ManyToOne
+    @JsonIgnore
+    private Course course;
 
     public int getId() {
         return id;
@@ -21,11 +26,11 @@ public class Module {
     }
 
     public List<Lesson> getLessons() {
-        return lessons;
+        return lesson;
     }
 
-    public void setLessons(List<Lesson> lessons) {
-        this.lessons = new ArrayList<>();
+    public void setLesson(List<Lesson> lesson) {
+        this.lesson = new ArrayList<>();
     }
 }
 

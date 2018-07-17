@@ -7,7 +7,7 @@
     loginCheck().then(listUser);
 
     function loginCheck() {
-        return fetch('loginCheck', {'credentials': 'include'}).then(function (response) {
+        return fetch('/loginCheck', {'credentials': 'include'}).then(function (response) {
             return response.json();
         });
     }
