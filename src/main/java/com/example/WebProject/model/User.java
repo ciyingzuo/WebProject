@@ -1,7 +1,6 @@
 package com.example.WebProject.model;
 
 import org.springframework.data.annotation.CreatedDate;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,6 +9,7 @@ import java.util.Date;
  *
  * @see Enum
  */
+@Entity
 public class User {
     public static enum accountType {
         Faculty,
