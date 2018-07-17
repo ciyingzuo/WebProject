@@ -78,7 +78,7 @@ public class UserServices {
         User data = oldUser.get();
         data.setFirstName(user.getFirstName());
         data.setLastName(user.getLastName());
-        data.setPassowrd(user.getPassword());
+        data.setPassword(user.getPassword());
         data.setUsername(user.getUsername());
         data.setRole(user.getRole());
         data.setPhone(user.getPhone());
