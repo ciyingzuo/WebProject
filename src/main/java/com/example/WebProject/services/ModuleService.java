@@ -1,12 +1,12 @@
 package com.example.WebProject.services;
 
+import com.example.WebProject.model.Course;
 import com.example.WebProject.model.Module;
 import com.example.WebProject.repository.ModuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ModuleService {
@@ -39,7 +39,14 @@ public class ModuleService {
 
     @CrossOrigin(origins = "*")
     @PostMapping("/api/module")
-    public Module createCourse(@RequestBody Module lesson) {
-        return moduleRepository.save(lesson);
+    public Module createCourse(@RequestBody Module module) {
+        return moduleRepository.save(module);
+    }
+
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/api/module/courseId/{id}")
+    public List<Module> findAllModulesForCourse(@PathVariable Integer id) {
+        return (List<Module>) moduleRepository.findByCourseId(id);
     }
 }
