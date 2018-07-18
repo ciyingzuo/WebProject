@@ -44,4 +44,13 @@ public class CourseService {
         return (List<Course>) courseRepository.findAll();
     }
 
+    @CrossOrigin(origins = "*")
+    @DeleteMapping("/api/course/delete/{id}")
+    public void deleteCourseByID(@PathVariable Integer id) {
+        try {
+            courseRepository.deleteById(id);
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+    }
 }
