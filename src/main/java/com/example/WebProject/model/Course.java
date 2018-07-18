@@ -1,21 +1,23 @@
 package com.example.WebProject.model;
+
 import javax.persistence.*;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 public class Course {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    private Date created = Calendar.getInstance().getTime();;
     @Temporal(TemporalType.TIMESTAMP)
     private Date modified;
-    @OneToMany(mappedBy="course")
+    @OneToMany(mappedBy = "course")
     private List<Module> module;
 
     public int getId() {
@@ -38,23 +40,23 @@ public class Course {
         return module;
     }
 
-    public void setId(int id){
+    public void setId(int id) {
         this.id = id;
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setCreated(Date created){
-        this.created = created;
+    public void setCreated(Date created) {
+        System.out.print(this.created);
     }
 
-    public void setModified(Date modified){
+    public void setModified(Date modified) {
         this.modified = modified;
     }
 
-    public void setModule(List<Module> module){
+    public void setModule(List<Module> module) {
         this.module = new ArrayList<>();
     }
 }
