@@ -4,6 +4,7 @@ import com.example.WebProject.model.Course;
 import com.example.WebProject.model.Lesson;
 import com.example.WebProject.repository.LessonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +39,7 @@ public class LessonService {
 //    PUT /api/lesson/{id}
 //0
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/api/lesson")
     public Lesson createCourse(@RequestBody Lesson lesson) {
         return lessonRepository.save(lesson);

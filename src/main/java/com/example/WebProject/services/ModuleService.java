@@ -3,6 +3,7 @@ package com.example.WebProject.services;
 import com.example.WebProject.model.Module;
 import com.example.WebProject.repository.ModuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,7 +37,7 @@ public class ModuleService {
 //    PUT /api/module/{id}
 //0
 
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/api/module")
     public Module createCourse(@RequestBody Module lesson) {
         return moduleRepository.save(lesson);
