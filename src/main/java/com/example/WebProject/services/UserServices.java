@@ -23,6 +23,7 @@ public class UserServices {
      * @param session http session
      * @return a user to be saved or a invalid user if username already exist
      */
+    @CrossOrigin(origins = "*")
     @PostMapping("/api/user/register")
     public User register(@RequestBody User user, HttpSession session) {
         User check = userRepository.findByUsername(user.getUsername());
@@ -43,6 +44,7 @@ public class UserServices {
      * @param session http session
      * @return User with saved session
      */
+    @CrossOrigin(origins = "*")
     @GetMapping("/loginCheck")
     public User loginCheck(HttpSession session) {
         return (User) session.getAttribute("currentUser");
@@ -72,6 +74,7 @@ public class UserServices {
      * @param user a user contains new information
      * @return a user contains updated information
      */
+    @CrossOrigin(origins = "*")
     @PutMapping("/api/user/update/{id}")
     public Optional<User> updateUser(@PathVariable Integer id, @RequestBody User user) {
         Optional<User> oldUser = userRepository.findById(id);
@@ -94,6 +97,7 @@ public class UserServices {
      *
      * @param id user id
      */
+    @CrossOrigin(origins = "*")
     @DeleteMapping("/api/user/delete/{id}")
     public void deleteUserByID(@PathVariable Integer id) {
         try {
@@ -108,6 +112,7 @@ public class UserServices {
      *
      * @return a list with all users in database
      */
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/user/findAll")
     public List<User> findAllUser() {
         return (List<User>) userRepository.findAll();
@@ -119,6 +124,7 @@ public class UserServices {
      * @param id user id
      * @return user with the same id
      */
+    @CrossOrigin(origins = "*")
     @GetMapping("/api/user/findById/{id}")
     public Optional<User> findUserById(@PathVariable Integer id) {
         return userRepository.findById(id);
