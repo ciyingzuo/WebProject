@@ -1,7 +1,7 @@
 package com.example.WebProject.services;
 
-import com.example.WebProject.model.Course;
 import com.example.WebProject.model.Module;
+import com.example.WebProject.repository.CourseRepository;
 import com.example.WebProject.repository.ModuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ModuleService {
+public class ModuleServices {
     @Autowired
     ModuleRepository moduleRepository;
+    @Autowired
+    CourseRepository courseRepository;
 //    createModule
 //    creates a module for a course
 //    POST /api/course/{cid}/module
@@ -39,14 +41,14 @@ public class ModuleService {
 
     @CrossOrigin(origins = "*")
     @PostMapping("/api/module")
-    public Module createCourse(@RequestBody Module module) {
+    public Module createModule(@RequestBody Module module) {
         return moduleRepository.save(module);
     }
 
 
-    @CrossOrigin(origins = "*")
-    @GetMapping("/api/module/courseId/{id}")
-    public List<Module> findAllModulesForCourse(@PathVariable Integer id) {
-        return (List<Module>) moduleRepository.findByCourseId(id);
-    }
+//    @CrossOrigin(origins = "*")
+//    @GetMapping("/api/module/courseId/{id}")
+//    public List<Module> findAllModulesForCourse(@PathVariable Integer id) {
+//        return (List<Module>) moduleRepository.findByCourseId(id);
+//    }
 }

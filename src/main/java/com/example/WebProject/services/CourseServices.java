@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-public class CourseService {
+public class CourseServices {
 
     @Autowired
     CourseRepository courseRepository;
@@ -42,6 +43,12 @@ public class CourseService {
     @GetMapping("/api/course")
     public List<Course> findAllCourses() {
         return (List<Course>) courseRepository.findAll();
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/api/course/{courseId}")
+    public Optional<Course> findUserById(@PathVariable Integer courseId) {
+        return courseRepository.findById(courseId);
     }
 
     @CrossOrigin(origins = "*")
