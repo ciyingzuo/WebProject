@@ -26,7 +26,7 @@ public class Module {
         this.id = id;
     }
 
-    public List<Lesson> getLessons() {
+    public List<Lesson> getLesson() {
         return lesson;
     }
 
