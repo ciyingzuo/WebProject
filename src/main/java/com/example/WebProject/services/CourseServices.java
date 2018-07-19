@@ -47,7 +47,7 @@ public class CourseServices {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/api/course/{courseId}")
-    public Optional<Course> findUserById(@PathVariable Integer courseId) {
+    public Optional<Course> findCourseById(@PathVariable Integer courseId) {
         return courseRepository.findById(courseId);
     }
 

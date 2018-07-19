@@ -12,8 +12,6 @@ import java.util.List;
 public class ModuleServices {
     @Autowired
     ModuleRepository moduleRepository;
-    @Autowired
-    CourseRepository courseRepository;
 //    createModule
 //    creates a module for a course
 //    POST /api/course/{cid}/module
@@ -45,7 +43,15 @@ public class ModuleServices {
         return moduleRepository.save(module);
     }
 
-
+    @CrossOrigin(origins = "*")
+    @DeleteMapping("/api/module/delete/{id}")
+    public void deleteModuleByID(@PathVariable Integer id) {
+        try {
+            moduleRepository.deleteById(id);
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+    }
 //    @CrossOrigin(origins = "*")
 //    @GetMapping("/api/module/courseId/{id}")
 //    public List<Module> findAllModulesForCourse(@PathVariable Integer id) {
