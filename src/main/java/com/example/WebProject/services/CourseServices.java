@@ -1,10 +1,17 @@
 package com.example.WebProject.services;
 
+import com.example.WebProject.model.Lesson;
+import com.example.WebProject.model.Module;
 import com.example.WebProject.model.Course;
+import com.example.WebProject.model.Topic;
 import com.example.WebProject.repository.CourseRepository;
+import com.example.WebProject.repository.LessonRepository;
+import com.example.WebProject.repository.ModuleRepository;
+import com.example.WebProject.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +20,12 @@ public class CourseServices {
 
     @Autowired
     CourseRepository courseRepository;
+    @Autowired
+    ModuleRepository moduleRepository;
+    @Autowired
+    LessonRepository lessonRepository;
+    @Autowired
+    TopicRepository topicRepository;
 //    createCourse
 //    creates a course
 //    POST /api/course
@@ -36,7 +49,34 @@ public class CourseServices {
     @CrossOrigin(origins = "*")
     @PostMapping("/api/course")
     public Course createCourse(@RequestBody Course course) {
-        return courseRepository.save(course);
+        Course newCourse = courseRepository.save(course);
+        Course dataC = courseRepository.findById(newCourse.getId()).get();
+        Module newModule = new Module();
+        newModule.setCourse(dataC);
+        newModule.setTitle("Module1");
+        newModule = moduleRepository.save(newModule);
+        Module dataM = moduleRepository.findById(newModule.getId()).get();
+        Lesson newLesson = new Lesson();
+        newLesson.setModule(dataM);
+        newLesson.setTitle("Lesson1");
+        newLesson = lessonRepository.save(newLesson);
+        Lesson dataL = lessonRepository.findById(newLesson.getId()).get();
+        Topic newTopic = new Topic();
+        newTopic.setLesson(dataL);
+        newTopic.setTitle("Topic1");
+        topicRepository.save(newTopic);
+        return courseRepository.findById(newCourse.getId()).get();
+    }
+
+    @CrossOrigin(origins = "*")
+    @PutMapping("/api/course/update/{id}")
+    public Optional<Course> updateCourse(@PathVariable Integer id, @RequestBody Course course) {
+        Optional<Course> oldCourse = courseRepository.findById(id);
+        Course data = oldCourse.get();
+        data.setModified(Calendar.getInstance().getTime());
+        data.setTitle(course.getTitle());
+        courseRepository.save(data);
+        return courseRepository.findById(id);
     }
 
     @CrossOrigin(origins = "*")

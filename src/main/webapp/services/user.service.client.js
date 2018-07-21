@@ -22,7 +22,11 @@ function UserServiceClient() {
             return response.json();
         }).then(function (user) {
             if (user.password != "") {
+            if(user.role == "Faculty"){
+            window.location.href = 'http://localhost:3000/whiteboard';
+            } else {
                 window.location.href = 'user_profile.template.client.html';
+            }
             } else {
                 alert("username or password incorrect");
             }

@@ -14,9 +14,9 @@ public class Course {
     private int id;
     private String title;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date created = Calendar.getInstance().getTime();;
+    private Date created = Calendar.getInstance().getTime();
     @Temporal(TemporalType.TIMESTAMP)
-    private Date modified;
+    private Date modified = Calendar.getInstance().getTime();
     @OneToMany(mappedBy = "course")
     private List<Module> module;
 
@@ -49,7 +49,7 @@ public class Course {
     }
 
     public void setCreated(Date created) {
-        System.out.print(this.created);
+        this.created = created;
     }
 
     public void setModified(Date modified) {
@@ -57,8 +57,38 @@ public class Course {
     }
 
     public void setModule(List<Module> module) {
-        this.module = new ArrayList<>();
+        this.module = module;
     }
 }
 
 
+//                    {
+//                            if (this.state.editing === 0) {
+//                            return <div className="container-fluid">
+//<Link to={'/courseEditor/' + this.props.course.id}>{this.props.course.title}</Link>
+//<Route path={'/courseEditor/:courseId'} component={CourseEditor}/>
+//</div>
+//        } else {
+//        return <div className="container-fluid">
+//<input onChange={this.formChanged} className="form-control" value={this.props.course.title}/>
+//<i className="fas fa-plus-square"
+//        onClick={() => {
+//        this.courseService.updateCourse(this.state.newCourse);
+//        this.setState({editing: 0})
+//        }
+//        }/>
+//</div>
+//        }
+//        }
+
+
+
+//<div className="container-fluid">
+//<input onChange={this.formChanged} className="form-control" value={this.props.course.title}/>
+//<i className="fas fa-plus-square"
+//        onClick={() => {
+//        this.courseService.updateCourse(this.state.newCourse);
+//        this.setState({editing: 0})
+//        }
+//        }/>
+//</div>

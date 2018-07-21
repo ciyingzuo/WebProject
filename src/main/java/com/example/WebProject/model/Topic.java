@@ -3,20 +3,16 @@ package com.example.WebProject.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-public class Lesson {
+public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
-    @OneToMany(mappedBy = "lesson")
-    private List<Topic> topic;
     @ManyToOne
     @JsonIgnore
-    private Module module;
+    private Lesson lesson;
 
     public int getId() {
         return id;
@@ -34,19 +30,11 @@ public class Lesson {
         this.title = title;
     }
 
-    public Module getModule() {
-        return module;
+    public Lesson getLesson() {
+        return lesson;
     }
 
-    public void setModule(Module module) {
-        this.module = module;
-    }
-
-    public List<Topic> getTopic() {
-        return topic;
-    }
-
-    public void setTopic(List<Topic> topic) {
-        this.topic = topic;
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
     }
 }

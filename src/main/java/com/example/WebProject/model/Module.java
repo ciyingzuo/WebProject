@@ -31,7 +31,7 @@ public class Module {
     }
 
     public void setLesson(List<Lesson> lesson) {
-        this.lesson = new ArrayList<>();
+        this.lesson = lesson;
     }
 
     public String getTitle() {
@@ -40,6 +40,14 @@ public class Module {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }
 
