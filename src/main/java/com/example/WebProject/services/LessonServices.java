@@ -51,7 +51,7 @@ public class LessonServices {
 //0
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/api/lesson/{moduleId}/lesson")
+    @PostMapping("/api/lesson/{moduleId}")
     public Lesson createLesson(@RequestBody Lesson lesson, @PathVariable("moduleId") Integer moduleId) {
         Module data = moduleRepository.findById(moduleId).get();
         lesson.setModule(data);
@@ -65,7 +65,7 @@ public class LessonServices {
     }
 
     @CrossOrigin(origins = "*")
-    @DeleteMapping("/api/lesson/delete/{lessonId}")
+    @DeleteMapping("/api/lesson/{lessonId}")
     public void deleteLessonById(@PathVariable Integer lessonId) {
         try {
             lessonRepository.deleteById(lessonId);
@@ -75,8 +75,18 @@ public class LessonServices {
     }
 
     @CrossOrigin(origins = "*")
+    @PutMapping("/api/lesson/{lessonId}")
+    public Optional<Lesson> updateModule(@PathVariable Integer lessonId, @RequestBody Lesson lesson) {
+        Optional<Lesson> oldLesson = lessonRepository.findById(lessonId);
+        Lesson data = oldLesson.get();
+        data.setTitle(lesson.getTitle());
+        lessonRepository.save(data);
+        return lessonRepository.findById(lessonId);
+    }
+
+    @CrossOrigin(origins = "*")
     @PostMapping("/api/lesson")
-    public Lesson createCourse(@RequestBody Lesson lesson) {
+    public Lesson createLesson(@RequestBody Lesson lesson) {
         return lessonRepository.save(lesson);
     }
 }

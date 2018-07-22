@@ -60,35 +60,3 @@ public class Course {
         this.module = module;
     }
 }
-
-
-//                    {
-//                            if (this.state.editing === 0) {
-//                            return <div className="container-fluid">
-//<Link to={'/courseEditor/' + this.props.course.id}>{this.props.course.title}</Link>
-//<Route path={'/courseEditor/:courseId'} component={CourseEditor}/>
-//</div>
-//        } else {
-//        return <div className="container-fluid">
-//<input onChange={this.formChanged} className="form-control" value={this.props.course.title}/>
-//<i className="fas fa-plus-square"
-//        onClick={() => {
-//        this.courseService.updateCourse(this.state.newCourse);
-//        this.setState({editing: 0})
-//        }
-//        }/>
-//</div>
-//        }
-//        }
-
-
-
-//<div className="container-fluid">
-//<input onChange={this.formChanged} className="form-control" value={this.props.course.title}/>
-//<i className="fas fa-plus-square"
-//        onClick={() => {
-//        this.courseService.updateCourse(this.state.newCourse);
-//        this.setState({editing: 0})
-//        }
-//        }/>
-//</div>

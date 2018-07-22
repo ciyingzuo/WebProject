@@ -69,7 +69,7 @@ public class CourseServices {
     }
 
     @CrossOrigin(origins = "*")
-    @PutMapping("/api/course/update/{id}")
+    @PutMapping("/api/course/{id}")
     public Optional<Course> updateCourse(@PathVariable Integer id, @RequestBody Course course) {
         Optional<Course> oldCourse = courseRepository.findById(id);
         Course data = oldCourse.get();
