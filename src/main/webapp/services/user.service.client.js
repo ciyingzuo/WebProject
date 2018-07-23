@@ -13,7 +13,7 @@ function UserServiceClient() {
             username: username,
         };
         userObj = JSON.stringify(userObj);
-        fetch('/api/user/login', {
+        fetch('https://arcane-plains-62348.herokuapp.com/api/user/login', {
             method: 'post',
             body: userObj,
             headers: {'Content-Type': 'application/json'},
@@ -23,7 +23,7 @@ function UserServiceClient() {
         }).then(function (user) {
             if (user.password != "") {
             if(user.role == "Faculty"){
-            window.location.href = 'http://localhost:3000/whiteboard';
+            window.location.href = 'https://arcane-plains-62348.herokuapp.com/whiteboard';
             } else {
                 window.location.href = 'user_profile.template.client.html';
             }
@@ -57,7 +57,7 @@ function UserServiceClient() {
         };
         var userObjStr = JSON.stringify(userObj);
 
-        fetch('/api/user/register', {
+        fetch('https://arcane-plains-62348.herokuapp.com/api/user/register', {
             method: 'post',
             body: userObjStr,
             headers: {'Content-Type': 'application/json'},
@@ -77,21 +77,21 @@ function UserServiceClient() {
 
 
     function findAllUsers() {
-        return fetch('/api/user/findAll')
+        return fetch('https://arcane-plains-62348.herokuapp.com/api/user/findAll')
             .then(function (response) {
                 return response.json();
             });
     }
 
     function findUserByID(id) {
-        fetch('/api/user/findById/' + id).then(function (response) {
+        fetch('https://arcane-plains-62348.herokuapp.com/api/user/findById/' + id).then(function (response) {
             return response.json();
         });
         ;
     }
 
     function deleteUser(id) {
-        fetch('/api/user/delete/' + id, {
+        fetch('https://arcane-plains-62348.herokuapp.com/api/user/delete/' + id, {
             method: 'delete',
             headers: {'Content-Type': 'application/json'}
         }).then(location.reload());
@@ -121,7 +121,7 @@ function UserServiceClient() {
             date_of_birth: date_of_birth
         };
         var userObjStr = JSON.stringify(userObj);
-        fetch('api/user/update/' + id, {
+        fetch('https://arcane-plains-62348.herokuapp.com/api/user/update/' + id, {
             method: 'put',
             body: userObjStr,
             headers: {
