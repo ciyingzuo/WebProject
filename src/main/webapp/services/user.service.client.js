@@ -23,7 +23,7 @@ function UserServiceClient() {
         }).then(function (user) {
             if (user.password != "") {
             if(user.role == "Faculty"){
-            window.location.href = 'https://ciyingzuo-wevdev-hw1.herokuapp.com/whiteboard';
+            window.location.href = 'https://ciyingzuo-webdev-hw2.herokuapp.com/whiteboard';
             } else {
                 window.location.href = 'user_profile.template.client.html';
             }
