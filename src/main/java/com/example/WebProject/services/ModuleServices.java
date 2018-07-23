@@ -79,17 +79,34 @@ public class ModuleServices {
     }
 
     @CrossOrigin(origins = "*")
-    @PutMapping("/api/module/{id}")
-    public Optional<Module> updateModule(@PathVariable Integer id, @RequestBody Module module) {
-        Optional<Module> oldModule = moduleRepository.findById(id);
+    @PutMapping("/api/module/{moduleId}")
+    public Optional<Module> updateModule(@PathVariable Integer moduleId, @RequestBody Module module) {
+        Optional<Module> oldModule = moduleRepository.findById(moduleId);
         Module data = oldModule.get();
         data.setTitle(module.getTitle());
         moduleRepository.save(data);
-        return moduleRepository.findById(id);
+        return moduleRepository.findById(moduleId);
     }
-//    @CrossOrigin(origins = "*")
-//    @GetMapping("/api/module/{courseId}")
-//    public List<Module> findAllModulesForCourse(@PathVariable Integer courseid) {
-//        return (List<Module>) moduleRepository.findByCourseId(id);
-//    }
+    @CrossOrigin(origins = "*")
+    @GetMapping("/api/module/{courseId}")
+    public List<Module> findByCourseId(@PathVariable Integer courseId) {
+
+        Optional<Course> course = courseRepository.findById(courseId);
+        Course data = course.get();
+        return (List<Module>) moduleRepository.findByCourseId(data);
+    }
 }
+
+
+//                        {this.state.course.module[moduleIndex].lesson.map((lesson, lessonIndex) => {
+//        return <LessonTab key={lessonIndex}
+//        lesson={lesson}
+//        moduleIndex={moduleIndex}
+//        lessonIndex={lessonIndex}
+//        currentLessonEdit={this.state.currentLessonEdit}
+//        setEditingLesson={this.setEditingLesson}
+//        deleteLesson={this.deleteLesson}
+//        updateLesson={this.updateLesson}
+//        currentSelect={this.currentSelect}/>
+//        }
+//        )}
