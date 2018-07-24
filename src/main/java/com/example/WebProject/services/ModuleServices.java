@@ -96,17 +96,3 @@ public class ModuleServices {
         return moduleRepository.findByCourseId(data);
     }
 }
-
-
-//                        {this.state.course.module[moduleIndex].lesson.map((lesson, lessonIndex) => {
-//        return <LessonTab key={lessonIndex}
-//        lesson={lesson}
-//        moduleIndex={moduleIndex}
-//        lessonIndex={lessonIndex}
-//        currentLessonEdit={this.state.currentLessonEdit}
-//        setEditingLesson={this.setEditingLesson}
-//        deleteLesson={this.deleteLesson}
-//        updateLesson={this.updateLesson}
-//        currentSelect={this.currentSelect}/>
-//        }
-//        )}
