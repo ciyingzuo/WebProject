@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -65,6 +66,14 @@ public class LessonServices {
     }
 
     @CrossOrigin(origins = "*")
+    @GetMapping("/api/lesson/{moduleId}")
+    public List<Lesson> findByModuleId(@PathVariable Integer moduleId) {
+        Optional<Module> module = moduleRepository.findById(moduleId);
+        Module data = module.get();
+        return lessonRepository.findByModuleId(data);
+    }
+
+    @CrossOrigin(origins = "*")
     @DeleteMapping("/api/lesson/{lessonId}")
     public void deleteLessonById(@PathVariable Integer lessonId) {
         try {
@@ -76,7 +85,7 @@ public class LessonServices {
 
     @CrossOrigin(origins = "*")
     @PutMapping("/api/lesson/{lessonId}")
-    public Optional<Lesson> updateModule(@PathVariable Integer lessonId, @RequestBody Lesson lesson) {
+    public Optional<Lesson> updateLesson(@PathVariable Integer lessonId, @RequestBody Lesson lesson) {
         Optional<Lesson> oldLesson = lessonRepository.findById(lessonId);
         Lesson data = oldLesson.get();
         data.setTitle(lesson.getTitle());
@@ -85,8 +94,8 @@ public class LessonServices {
     }
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/api/lesson")
-    public Lesson createLesson(@RequestBody Lesson lesson) {
-        return lessonRepository.save(lesson);
+    @GetMapping("/api/lesson")
+    public List<Lesson> findAllLesson() {
+        return (List<Lesson>)lessonRepository.findAll();
     }
 }

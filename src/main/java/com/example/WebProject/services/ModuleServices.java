@@ -93,7 +93,7 @@ public class ModuleServices {
 
         Optional<Course> course = courseRepository.findById(courseId);
         Course data = course.get();
-        return (List<Module>) moduleRepository.findByCourseId(data);
+        return moduleRepository.findByCourseId(data);
     }
 }
 
