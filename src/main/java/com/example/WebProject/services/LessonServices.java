@@ -18,8 +18,6 @@ import java.util.Optional;
 @RestController
 public class LessonServices {
     @Autowired
-    CourseRepository courseRepository;
-    @Autowired
     ModuleRepository moduleRepository;
     @Autowired
     LessonRepository lessonRepository;

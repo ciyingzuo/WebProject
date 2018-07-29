@@ -14,10 +14,6 @@ import java.util.List;
 @RestController
 public class TopicServices {
     @Autowired
-    CourseRepository courseRepository;
-    @Autowired
-    ModuleRepository moduleRepository;
-    @Autowired
     LessonRepository lessonRepository;
     @Autowired
     TopicRepository topicRepository;
