@@ -6,6 +6,9 @@ import com.example.WebProject.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 public class WidgetServices {
 
@@ -31,8 +34,17 @@ public class WidgetServices {
     }
 
     @CrossOrigin(origins = "*")
+    @GetMapping("/api/widget/{topicId}")
+    public List<Widget> findByTopicId(@PathVariable Integer topicId) {
+
+        Optional<Topic> topic = topicRepository.findById(topicId);
+        Topic data = topic.get();
+        return widgetRepository.findByTopic(data);
+    }
+
+    @CrossOrigin(origins = "*")
     @DeleteMapping("/api/widget/delete/{id}")
-    public void deleteTopicByID(@PathVariable Integer id) {
+    public void deleteWidgetByID(@PathVariable Integer id) {
         try {
             topicRepository.deleteById(id);
         } catch (Exception e) {

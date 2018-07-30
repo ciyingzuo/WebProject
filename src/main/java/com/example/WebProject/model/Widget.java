@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Widget {
     public static enum widgetType {
+        YOUTUBE,
         HEADING,
         IMAGE,
         LIST,
