@@ -17,6 +17,14 @@ public class Widget {
         this.widget_order = widget_order;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public static enum widgetType {
         YOUTUBE,
         HEADING,
@@ -32,9 +40,8 @@ public class Widget {
     @Enumerated(EnumType.STRING)
     private widgetType type;
     private int widget_order;
-    private String name;
+    private String title;
     private String text;
-    private String className;
     private String style;
     private String width;
     private String height;
@@ -63,28 +70,12 @@ public class Widget {
         this.type = type;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getText() {
         return text;
     }
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
     }
 
     public String getStyle() {
