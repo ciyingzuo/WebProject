@@ -24,31 +24,6 @@ public class LessonServices {
     @Autowired
     TopicRepository topicRepository;
 
-//    createLesson
-//    creates a lesson for a module
-//    POST /api/course/{cid}/module/{mid}/lesson
-//1
-//    deleteLesson
-//    deletes a lesson by id
-//    DELETE /api/lesson/{id}
-//1
-//    findAllLessons
-//    retrieves all the lessons
-//    GET /api/lesson
-//1
-//    findLessonById
-//    retrieves a lesson by id
-//    GET /api/lesson/{id}
-//0
-//    findAllLessonssForModule
-//    retrieves all lessons for module
-//    GET /api/course/{cid}/module/{mid}/lesson
-//1
-//    updateLesson
-//    updates a lesson by id
-//    PUT /api/lesson/{id}
-//0
-
     @CrossOrigin(origins = "*")
     @PostMapping("/api/lesson/{moduleId}")
     public Lesson createLesson(@RequestBody Lesson lesson, @PathVariable("moduleId") Integer moduleId) {

@@ -15,7 +15,7 @@ public class Topic {
     @JsonIgnore
     private Lesson lesson;
     @OneToMany(mappedBy = "topic")
-    private List<Widget> widgets;
+    private List<Widget> widget;
 
     public int getId() {
         return id;
@@ -41,11 +41,11 @@ public class Topic {
         this.lesson = lesson;
     }
 
-    public List<Widget> getWidgets() {
-        return widgets;
+    public List<Widget> getWidget() {
+        return widget;
     }
 
-    public void setWidgets(List<Widget> widgets) {
-        this.widgets = widgets;
+    public void setWidget(List<Widget> widget) {
+        this.widget = widget;
     }
 }

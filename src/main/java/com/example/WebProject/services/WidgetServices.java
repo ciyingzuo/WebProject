@@ -24,13 +24,17 @@ public class WidgetServices {
     TopicRepository topicRepository;
 
     @CrossOrigin(origins = "*")
-    @PostMapping("/api/widget/{topicId}/widget")
-    public Widget createWidget(@RequestBody Widget widget, @PathVariable("topicId") Integer topicId) {
-
+    @PostMapping("/api/widget/{topicId}")
+    public List<Widget> saveWidget(@RequestBody List<Widget> widget, @PathVariable("topicId") Integer topicId) {
         Topic data = topicRepository.findById(topicId).get();
-        widget.setTopic(data);
-        Widget newWidget = widgetRepository.save(widget);
-        return widgetRepository.findById(newWidget.getId()).get();
+        for (Widget w : widget) {
+            if(w.getId() != 0){
+                widgetRepository.deleteById(w.getId());
+            }
+            w.setTopic(data);
+            widgetRepository.save(w);
+        }
+        return widgetRepository.findByTopic(data);
     }
 
     @CrossOrigin(origins = "*")
@@ -43,7 +47,7 @@ public class WidgetServices {
     }
 
     @CrossOrigin(origins = "*")
-    @DeleteMapping("/api/widget/delete/{id}")
+    @DeleteMapping("/api/widget/{id}")
     public void deleteWidgetByID(@PathVariable Integer id) {
         try {
             topicRepository.deleteById(id);
@@ -51,7 +55,6 @@ public class WidgetServices {
             System.out.print(e.getMessage());
         }
     }
-
 
 
 }

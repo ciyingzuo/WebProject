@@ -9,4 +9,7 @@ import java.util.List;
 public interface WidgetRepository extends CrudRepository<Widget, Integer> {
     @Query("SELECT widget FROM Widget widget WHERE widget.topic = :topic")
     List<Widget> findByTopic(@Param("topic") Topic topic);
+
+    @Query("DELETE FROM Widget widget WHERE widget.topic = :topic")
+    List<Widget> deleteByTopic(@Param("topic") Topic topic);
 }

@@ -9,6 +9,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 
 public class Widget {
+    public int getWidget_order() {
+        return widget_order;
+    }
+
+    public void setWidget_order(int widget_order) {
+        this.widget_order = widget_order;
+    }
+
     public static enum widgetType {
         YOUTUBE,
         HEADING,
@@ -149,14 +157,5 @@ public class Widget {
 
     public void setTopic(Topic topic) {
         this.topic = topic;
-    }
-
-
-    public int getWdiget_order() {
-        return widget_order;
-    }
-
-    public void setWdiget_order(int wdiget_order) {
-        this.widget_order = wdiget_order;
     }
 }
