@@ -24,10 +24,10 @@ public class TopicServices {
         Lesson data = lessonRepository.findById(lessonId).get();
         topic.setLesson(data);
         Topic newTopic = topicRepository.save(topic);
-        Topic dataT = topicRepository.findById(newTopic.getId()).get();
-        Widget newWidget = new Widget();
-        newWidget.setTopic(dataT);
-        widgetRepository.save(newWidget);
+//        Topic dataT = topicRepository.findById(newTopic.getId()).get();
+//        Widget newWidget = new Widget();
+//        newWidget.setTopic(dataT);
+//        widgetRepository.save(newWidget);
         return topicRepository.findById(newTopic.getId()).get();
     }
 
