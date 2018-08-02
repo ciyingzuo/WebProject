@@ -24,7 +24,29 @@ public class WidgetServices {
     TopicRepository topicRepository;
 
     @CrossOrigin(origins = "*")
+    @GetMapping("/api/widget")
+    public Iterable<Widget> findAll() {
+        return widgetRepository.findAll();
+    }
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/api/widget/{widgetId}")
+    public Optional<Widget> findById(@PathVariable("widgetId") Integer widgetId) {
+        return widgetRepository.findById(widgetId);
+    }
+
+    @CrossOrigin(origins = "*")
     @PostMapping("/api/widget/{topicId}")
+    public Widget createWidget(@PathVariable("topicId") Integer topicId, @RequestBody Widget widget) {
+        Optional<Topic> topic = topicRepository.findById(topicId);
+        Topic data = topic.get();
+        widget.setTopic(data);
+        return widgetRepository.save(widget);
+    }
+
+
+    @CrossOrigin(origins = "*")
+    @PutMapping("/api/widget/{topicId}")
     public List<Widget> saveWidget(@RequestBody List<Widget> widget, @PathVariable("topicId") Integer topicId) {
         Topic data = topicRepository.findById(topicId).get();
         List<Widget> oldWidget = data.getWidget();
@@ -41,7 +63,6 @@ public class WidgetServices {
     @CrossOrigin(origins = "*")
     @GetMapping("/api/widget/{topicId}")
     public List<Widget> findByTopicId(@PathVariable Integer topicId) {
-
         Optional<Topic> topic = topicRepository.findById(topicId);
         Topic data = topic.get();
         return widgetRepository.findByTopic(data);
