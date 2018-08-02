@@ -27,10 +27,11 @@ public class WidgetServices {
     @PostMapping("/api/widget/{topicId}")
     public List<Widget> saveWidget(@RequestBody List<Widget> widget, @PathVariable("topicId") Integer topicId) {
         Topic data = topicRepository.findById(topicId).get();
+        List<Widget> oldWidget = data.getWidget();
+        for (Widget w : oldWidget) {
+            widgetRepository.deleteById(w.getId());
+        }
         for (Widget w : widget) {
-            if(w.getId() != 0){
-                widgetRepository.deleteById(w.getId());
-            }
             w.setTopic(data);
             widgetRepository.save(w);
         }

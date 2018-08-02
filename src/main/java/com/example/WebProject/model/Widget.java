@@ -70,6 +70,7 @@ public class Widget {
         this.type = type;
     }
 
+
     public String getText() {
         return text;
     }
