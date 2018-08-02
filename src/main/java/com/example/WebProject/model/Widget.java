@@ -25,6 +25,14 @@ public class Widget {
         this.title = title;
     }
 
+    public boolean isOrdered() {
+        return ordered;
+    }
+
+    public void setOrdered(boolean ordered) {
+        this.ordered = ordered;
+    }
+
     public static enum widgetType {
         YOUTUBE,
         HEADING,
@@ -47,7 +55,7 @@ public class Widget {
     private String height;
     private String src;
     private String listItems;
-    private String ordered;
+    private boolean ordered;
     private int size;
     private String href;
     @ManyToOne
@@ -117,14 +125,6 @@ public class Widget {
 
     public void setListItems(String listItems) {
         this.listItems = listItems;
-    }
-
-    public String getOrdered() {
-        return ordered;
-    }
-
-    public void setOrdered(String ordered) {
-        this.ordered = ordered;
     }
 
     public int getSize() {
