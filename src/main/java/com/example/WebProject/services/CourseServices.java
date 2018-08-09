@@ -57,6 +57,22 @@ public class CourseServices {
         Course data = oldCourse.get();
         data.setModified(Calendar.getInstance().getTime());
         data.setTitle(course.getTitle());
+        data.setVisibility(course.getVisibility());
+        courseRepository.save(data);
+        return courseRepository.findById(id);
+    }
+
+    @CrossOrigin(origins = "*")
+    @PutMapping("/api/course/{id}/visibility")
+    public Optional<Course> toggleVisibility(@PathVariable Integer id) {
+        Optional<Course> oldCourse = courseRepository.findById(id);
+        Course data = oldCourse.get();
+        data.setModified(Calendar.getInstance().getTime());
+        if(data.getVisibility() == Course.visibility.PRIVATE){
+            data.setVisibility(Course.visibility.PUBLIC);
+        } else {
+            data.setVisibility(Course.visibility.PRIVATE);
+        }
         courseRepository.save(data);
         return courseRepository.findById(id);
     }
