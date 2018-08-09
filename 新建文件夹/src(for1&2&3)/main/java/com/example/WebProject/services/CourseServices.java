@@ -26,11 +26,29 @@ public class CourseServices {
     LessonRepository lessonRepository;
     @Autowired
     TopicRepository topicRepository;
-
+//    createCourse
+//    creates a course
+//    POST /api/course
+//1
+//    deleteCourse
+//    deletes a course by id
+//    DELETE /api/course/{id}
+//1
+//    findAllCourses
+//    retrieves all the courses
+//    GET /api/course
+//1
+//    findCourseById
+//    retrieves a course by id
+//    GET /api/course/{id}
+//0
+//    updateCourse
+//    updates a course by id
+//    PUT /api/course/{id}
+//0
     @CrossOrigin(origins = "*")
     @PostMapping("/api/course")
     public Course createCourse(@RequestBody Course course) {
-        course.setVisibility(Course.visibility.PUBLIC);
         Course newCourse = courseRepository.save(course);
         Course dataC = courseRepository.findById(newCourse.getId()).get();
         Module newModule = new Module();

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+</script>
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+
+      rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Portal</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <h1>User Admin</h1>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Password</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Date of Birth</th>
+            <th>ID</th>
+            <th>Action</th>
+            <th>&nbsp;</th>
+        </tr>
+
+        <tr>
+            <form>
+                <th><input id="firstName" input/></th>
+                <th><input id="lastName" input/></th>
+                <th><input id="password" input/></th>
+                <th><input id="username" input/></th>
+                <th>
+                    <select id="role">
+                        <option value="Student"> Student</option>
+                        <option value="Faculty"> Faculty</option>
+                        <option value="Admin"> Admin</option>
+                    </select>
+                </th>
+                <th><input id="phone" type="tel" input/></th>
+                <th><input id="emailAddress" type="email" input/></th>
+                <th><input id="date_of_birth" type="date" input/></th>
+                <th></th>
+                <th>
+                    <input type="submit" id="registerBtn" class='btn btn-primary' value="Create User">
+                </th>
+            </form>
+        </tr>
+        </thead>
+        <tbody id="userTable">
+
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="../services/user.service.client.js"></script>
+<script src="../javascript/user_admin.controller.client.js"></script>
+<link href="../css/user_admin.style.client.css" rel="stylesheet"/>
+
+</html>

@@ -9,24 +9,9 @@ import java.util.List;
 
 @Entity
 public class Course {
-
-    public Course.visibility getVisibility() {
-        return visibility;
-    }
-
-    public void setVisibility(Course.visibility visibility) {
-        this.visibility = visibility;
-    }
-
-    public static enum visibility {
-        PUBLIC,
-        PRIVATE
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private visibility visibility;
     private String title;
     @Temporal(TemporalType.TIMESTAMP)
     private Date created = Calendar.getInstance().getTime();
